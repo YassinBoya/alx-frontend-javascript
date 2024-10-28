@@ -25,7 +25,8 @@ export default class Airport {
   greet() {
     return `Airport [${this._code}] { _name: '${this._name}', _code: '${this._code}' }`;
   }
-  toString(){
+
+  toString() {
     return `[object ${this._code}]`;
   }
 }
