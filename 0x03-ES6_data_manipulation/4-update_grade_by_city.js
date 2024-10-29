@@ -1,19 +1,22 @@
-export default function updateStudentGradeByCity(getListStudents, city, newGrades) {
-  if (!Array.isArray(getListStudents) || !Array.isArray(newGrades)) {
-    throw new TypeError('getListStudents and newGrades should be arrays');
-  }
-  const filtredStudents = getListStudents.filter(
+export default function updateStudentGradeByCity(
+  students,
+  city,
+  newGrades,
+) {
+  const filterStudents = students.filter(
     (student) => student.location === city,
   );
 
-  const allGradeStudents = filtredStudents.map((student) => {
-    for (const studentsGrade of newGrades) {
-      if (student.id === studentsGrade.studentId) {
-        student.grade = studentsGrade.grade;
+  const gradeStudents = filterStudents.map(
+    (student) => {
+      for (const gradeStudent of newGrades) {
+        if (student.id === gradeStudent.studentId) {
+          student.grade = gradeStudent.grade; // eslint-disable-line no-param-reassign
+        }
       }
-    }
-    return student;
-  });
+      return student;
+    },
+  );
 
-  return allGradeStudents;
+  return gradeStudents;
 }
