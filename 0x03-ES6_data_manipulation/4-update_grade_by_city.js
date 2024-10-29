@@ -14,6 +14,9 @@ export default function updateStudentGradeByCity(
           student.grade = gradeStudent.grade; // eslint-disable-line no-param-reassign
         }
       }
+      if (student.grade === undefined) {
+        student.grade = 'N/A'; // eslint-disable-line no-param-reassign
+      }
       return student;
     },
   );
